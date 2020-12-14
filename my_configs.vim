@@ -11,12 +11,27 @@ endif
 "Reload .vimrc and :PlugInstall to install plugins.
 call plug#begin('~/.vim_runtime/my_plugins')
 
+" 搜索
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'           " Set up fzf and fzf.vim
 
+" 导航
 Plug 'preservim/nerdtree'
 
+
+" git 增强
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'airblade/vim-gitgutter'
+
+" JS/TS 开发相关
+
+Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty'
+
+" 注释
+Plug 'preservim/nerdcommenter'
+
+" IDE
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 
 call plug#end()
@@ -181,3 +196,11 @@ if !empty(maparg('<leader>g','n'))
    unmap <leader>g
 endif
 
+
+""" nerdTree"""""
+" 打开 vim 自动打开
+autocmd VimEnter * NERDTree
+" 确保 NERDTree 不是默认选中的
+autocmd VimEnter * wincmd p
+" 关闭文件的时候如果只剩下 NERDTree, 自动关闭 NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
