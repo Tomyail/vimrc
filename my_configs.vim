@@ -31,6 +31,11 @@ Plug 'maxmellon/vim-jsx-pretty'
 " 注释
 Plug 'preservim/nerdcommenter'
 
+" 查看 vim 按键映射
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+" 给文件加上图标
+Plug 'ryanoasis/vim-devicons'
+
 " IDE
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 
@@ -204,3 +209,5 @@ autocmd VimEnter * NERDTree
 autocmd VimEnter * wincmd p
 " 关闭文件的时候如果只剩下 NERDTree, 自动关闭 NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
