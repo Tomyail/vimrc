@@ -34,8 +34,12 @@ Plug 'preservim/nerdcommenter'
 " 查看 vim 按键映射
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 " 给文件加上图标
+" 需要从这个仓库 https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts 下载自己喜欢的字体,然后把自己的终端字体设置成那个(一般都是**Nerd Font Complete)
 Plug 'ryanoasis/vim-devicons'
 
+" 状态栏和主题加强
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 " IDE
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 
@@ -211,3 +215,11 @@ autocmd VimEnter * wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
+""""""" airline """""""""
+" 打开智能 tab
+let g:airline#extensions#tabline#enabled = 1
+" 设置 tab 的文件名显示风格
+let g:airline#extensions#tabline#formatter = 'jsformatter'
+
+""""" airline theme """""
+let g:airline_theme='simple'
