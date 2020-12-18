@@ -25,7 +25,7 @@ Plug 'airblade/vim-gitgutter'
 
 " JS/TS 开发相关
 
-Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 Plug 'maxmellon/vim-jsx-pretty'
 
 " 注释
@@ -34,19 +34,39 @@ Plug 'preservim/nerdcommenter'
 " 查看 vim 按键映射
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 " 给文件加上图标
-" 需要从这个仓库 https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts 下载自己喜欢的字体,然后把自己的终端字体设置成那个(一般都是**Nerd Font Complete)
 Plug 'ryanoasis/vim-devicons'
 
 " 状态栏和主题加强
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" tag
+"
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+
+" Plug 'unkiwii/vim-nerdtree-sync'
+Plug 'easymotion/vim-easymotion'
+
+" Plug 'thaerkh/vim-workspace'
+" Plug 'liuchengxu/vista.vim'
 " IDE
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 
 call plug#end()
 
 """""""""""""" COC 配置   """""""""""""""
-let g:coc_global_extensions = [ 'coc-tsserver', 'coc-imselect' ]
+" let g:coc_global_extensions = [ 'coc-tsserver', 'coc-imselect' ]
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint',
+  \ 'coc-prettier',
+  \ 'coc-json',
+  \ ]
+
+" prettier command for coc
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -208,18 +228,35 @@ endif
 
 """ nerdTree"""""
 " 打开 vim 自动打开
-autocmd VimEnter * NERDTree
+" autocmd VimEnter * NERDTree
 " 确保 NERDTree 不是默认选中的
-autocmd VimEnter * wincmd p
+" autocmd VimEnter * wincmd p
 " 关闭文件的时候如果只剩下 NERDTree, 自动关闭 NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+"
+" keep nerdTree on left
+let g:NERDTreeWinPos = 'left'
+
+let g:NERDTreeIgnore = ['^node_modules$']
+let g:NERDTreeHighlightCursorline = 1
 
 
 """"""" airline """""""""
 " 打开智能 tab
 let g:airline#extensions#tabline#enabled = 1
 " 设置 tab 的文件名显示风格
-let g:airline#extensions#tabline#formatter = 'jsformatter'
+" let g:airline#extensions#tabline#formatter = 'jsformatter'
 
 """"" airline theme """""
 let g:airline_theme='simple'
+
+" Map leader to which_key
+nnoremap <silent> <leader> :silent <c-u> :silent WhichKey ','<CR>
+vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual ','<CR>
+
+
+" differ 使用水平视图
+set diffopt+=vertical
+
+" 虽然 vim 社区提倡不要打开 mouse,但是本着先习惯后精通的原则,暂时把鼠标支持先打开好让自己在 vim 环境呆下去.
+set mouse=a
