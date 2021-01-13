@@ -32,7 +32,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'preservim/nerdcommenter'
 
 " 查看 vim 按键映射
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+" Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 " 给文件加上图标
 Plug 'ryanoasis/vim-devicons'
 
@@ -44,15 +44,22 @@ Plug 'vim-airline/vim-airline-themes'
 " Plug 'SirVer/ultisnips'
 " Plug 'honza/vim-snippets'
 
-" Plug 'unkiwii/vim-nerdtree-sync'
 Plug 'easymotion/vim-easymotion'
 
 " Plug 'thaerkh/vim-workspace'
 " Plug 'liuchengxu/vista.vim'
+"
+"
 " IDE
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 
+" Theme
+Plug 'dracula/vim', { 'as': 'dracula' }
+
 call plug#end()
+
+" Apply dracula theme
+colorscheme dracula
 
 """""""""""""" COC 配置   """""""""""""""
 " let g:coc_global_extensions = [ 'coc-tsserver', 'coc-imselect' ]
