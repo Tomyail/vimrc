@@ -56,6 +56,9 @@ Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 " Theme
 Plug 'dracula/vim', { 'as': 'dracula' }
 
+
+Plug 'editorconfig/editorconfig-vim'
+
 call plug#end()
 
 " Apply dracula theme
@@ -138,7 +141,7 @@ nmap <leader>f  <Plug>(coc-format-selected)
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  autocmd FileType typescript,json,javascript,javascriptreact,typescriptreact setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
@@ -258,8 +261,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='simple'
 
 " Map leader to which_key
-nnoremap <silent> <leader> :silent <c-u> :silent WhichKey ','<CR>
-vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual ','<CR>
+" nnoremap <silent> <leader> :silent <c-u> :silent WhichKey ','<CR>
+" vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual ','<CR>
 
 
 " differ 使用水平视图
