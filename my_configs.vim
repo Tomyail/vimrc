@@ -49,15 +49,42 @@ Plug 'easymotion/vim-easymotion'
 " Plug 'thaerkh/vim-workspace'
 " Plug 'liuchengxu/vista.vim'
 "
-"
 " IDE
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 
 " Theme
 Plug 'dracula/vim', { 'as': 'dracula' }
 
-
+" 根据 editconfig 配置确定缩进
 Plug 'editorconfig/editorconfig-vim'
+
+" git manager
+Plug 'tpope/vim-fugitive'
+
+
+Plug 'mileszs/ack.vim'
+
+Plug 'kien/ctrlp.vim'
+
+Plug 'vim-scripts/bufexplorer.zip'
+
+Plug 'junegunn/goyo.vim'
+Plug 'morhetz/gruvbox'
+
+Plug 'godlygeek/tabular'
+
+Plug 'tomtom/tlib_vim'
+
+Plug 'tpope/tpope-vim-abolish'
+Plug 'altercation/vim-colors-solarized'
+Plug 'marcweber/vim-addon-mw-utils'
+Plug 'terryma/vim-expand-region'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'plasticboy/vim-markdown'
+Plug 'tpope/vim-markdown'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'honza/vim-snippets'
+Plug 'tpope/vim-surround'
 
 call plug#end()
 
