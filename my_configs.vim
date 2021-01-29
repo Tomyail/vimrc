@@ -64,7 +64,7 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'mileszs/ack.vim'
 
-Plug 'kien/ctrlp.vim'
+"Plug 'kien/ctrlp.vim'
 
 Plug 'vim-scripts/bufexplorer.zip'
 
@@ -249,6 +249,7 @@ set rtp+=~/.fzf
 nnoremap <C-p> :GFiles<Cr>
 " Map fzf + ag search to CTRL P
 nnoremap <C-g> :Ag<Cr>
+nnoremap <leader>f :Rg<Cr>
 
 """"""" coc  """""""
 "close coc start version warning
