@@ -11,12 +11,17 @@ endif
 "Reload .vimrc and :PlugInstall to install plugins.
 call plug#begin('~/.vim_runtime/my_plugins')
 
+
 " 搜索
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'           " Set up fzf and fzf.vim
 
 " 导航
 Plug 'preservim/nerdtree'
+
+
+" session auto update
+Plug 'tpope/vim-obsession'
 
 
 " git 增强
@@ -279,6 +284,10 @@ let g:NERDTreeIgnore = ['^node_modules$']
 let g:NERDTreeHighlightCursorline = 1
 
 
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+
 """"""" airline """""""""
 " 打开智能 tab
 let g:airline#extensions#tabline#enabled = 1
@@ -298,3 +307,12 @@ set diffopt+=vertical
 
 " 虽然 vim 社区提倡不要打开 mouse,但是本着先习惯后精通的原则,暂时把鼠标支持先打开好让自己在 vim 环境呆下去.
 set mouse=a
+
+
+
+
+" session manager
+
+let g:session_dir = '~/.vim_sessions'
+exec 'nnoremap <Leader>ss :Obsession ' . g:session_dir . '/*.vim<C-D><BS><BS><BS><BS><BS>'
+exec 'nnoremap <Leader>sr :so ' . g:session_dir. '/*.vim<C-D><BS><BS><BS><BS><BS>'
